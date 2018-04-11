@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import BirthdayCard from '@/components/Cards/Birthday';
+import BirthdayCard from '@/components/Cards/Birthday'
 
 export default {
-  components: { BirthdayCard },
-};
+  components: { BirthdayCard }
+}
 </script>
 
 <style>
