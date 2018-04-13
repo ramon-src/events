@@ -1,47 +1,102 @@
 <template>
   <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-card-media src="https://anacuder.com/wp-content/uploads/2017/09/every-school-needs-to-adopt-the-birthday-cake-ban.jpg" height="200px" />
-        <v-card-title primary-title>
-          <div>
-            <div class="headline">Aniversariantes do mês!</div>
-
-            <span class="grey--text">
-              <v-icon>event</v-icon> 20/04/2018</span>
-            <span class="grey--text">
-              <v-icon>room</v-icon> 4 Beer</span>
-          </div>
-        </v-card-title>
-        <div/>
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-          <v-spacer/>
-          <v-btn icon @click.native="show = !show">
-            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-          </v-btn>
-        </v-card-actions>
-        <v-slide-y-transition>
-          <v-card-text v-show="show">
-            I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-          </v-card-text>
-        </v-slide-y-transition>
+    <v-flex xs12 sm6 offset-sm3 class="u-card-flip-container">
+      <v-card class="l-card" :class="{'-flipped': flipped}">
+        <front-card :event="event" @toggleCard="flipCard"></front-card>
+        <back-card :event="event" @toggleCard="flipCard"></back-card>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import FrontCard from '@/components/Cards/Birthday/Front'
+import BackCard from '@/components/Cards/Birthday/Back'
+
 export default {
+  components: {
+    FrontCard,
+    BackCard
+  },
   data () {
     return {
-      show: false
+      flipped: false,
+      name: '',
+      attend: true
+    }
+  },
+  props: {
+    event: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    flipCard () {
+      this.flipped = !this.flipped
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+
+.u-card-flip-container {
+  position: relative;
+  perspective: 800px;
+}
+.l-card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  font-family: 'Patua One', cursive;
+    &.-flipped {
+      transform: rotateY( -180deg );
+    }
+
+  & &__body {
+    backface-visibility: hidden;
+
+    &.-front {
+    }
+    &.-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 9000;
+      background-color: white;
+      transform: rotateY( -180deg );
+    }
+  }
+
+  & &__title {
+    padding-top: 10px;
+  }
+
+  & &__info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 10px;
+  }
+
+  & &__info {
+    font-size: .9em;
+    margin-bottom: 3px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  & &__actions {
+    padding: 0px 10px 10px 10px;
+  }
+}
 
 </style>

@@ -4,6 +4,8 @@ import Vue from 'vue'
 // import VueFeatherIcon from 'vue-feather-icon';
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import './styles/sass/app.scss'
+import { store } from './store'
 
 import App from './App'
 import router from './router'
@@ -17,5 +19,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
+  store,
   template: '<App/>'
 })
