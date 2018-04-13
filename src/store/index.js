@@ -12,7 +12,9 @@ export const store = new Vuex.Store({
         date: '20/04/2018',
         location: '4 beer',
         linkLocation: 'https://goo.gl/maps/BiLVm1TiYxH2',
-        registeredUsers: []
+        registeredUsers: [],
+        description: 'Mais um mês para a família uMov.me se juntar e celebrar os aniversariantes!! O local foi escolhido porque todos adoram o 4Beer: Comida boa e cerveja melhor ainda. Bora galera!!',
+        birthdays: ['Eduardo', 'Felix', 'Fred', 'Sebastian']
       }
     ],
     user: {

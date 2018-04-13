@@ -53,7 +53,6 @@ export default {
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 1s;
-  font-family: 'Patua One', cursive;
     &.-flipped {
       transform: rotateY( -180deg );
     }
@@ -64,11 +63,12 @@ export default {
     &.-front {
     }
     &.-back {
-      width: 100%;
-      height: 100%;
       position: absolute;
       top: 0;
+      width: 100%;
+      height: 100%;
       z-index: 9000;
+      padding: 16px 0px;
       background-color: white;
       transform: rotateY( -180deg );
     }
@@ -76,6 +76,7 @@ export default {
 
   & &__title {
     padding-top: 10px;
+    font-family: 'Patua One', cursive;
   }
 
   & &__info-container {
@@ -83,6 +84,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px 10px;
+    width: 100%;
   }
 
   & &__info {
