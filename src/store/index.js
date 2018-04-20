@@ -38,6 +38,13 @@ export const store = new Vuex.Store({
           return event.id === eventId
         })
       }
+    },
+    eventRegisteredUsers (state) {
+      return (eventId) => {
+        return state.events.find((event) => {
+          return event.id === eventId
+        }).registeredUsers
+      }
     }
   }
 })

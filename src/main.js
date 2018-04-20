@@ -4,6 +4,7 @@ import Vue from 'vue'
 // import VueFeatherIcon from 'vue-feather-icon';
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import * as firebase from 'firebase'
 import './styles/sass/app.scss'
 import { store } from './store'
 
@@ -20,5 +21,14 @@ new Vue({
   router,
   components: { App },
   store,
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyAsgeWoVgw7z6fZO4kdGW1u7JY54ToHq9E',
+      authDomain: 'events-65c58.firebaseapp.com',
+      databaseURL: 'https://events-65c58.firebaseio.com',
+      projectId: 'events-65c58',
+      storageBucket: 'events-65c58.appspot.com'
+    })
+  }
 })
